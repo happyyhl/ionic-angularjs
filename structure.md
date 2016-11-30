@@ -94,3 +94,37 @@
 		  $urlRouterProvider.otherwise('/start')
 
 		});
+###service.js
+		angular.module('app.services', [])
+
+		.factory('tokenInterceptor', function ($rootScope, $q, $window) {
+		  return {
+		    request: function (config) {
+		      config.auth = config.auth || {};
+		      // 设置你的header
+		      if ($window.localStorage.token) {
+		        config.headers.token = $window.localStorage.token;
+		        // config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+		      }
+		      return config;
+		    },
+		    responseError: function (rejection) {
+		      if (rejection.status === 401) {
+		        // handle the case where the user is not authenticated
+		      }
+		      return $q.reject(rejection);
+		    }
+		  };
+		})
+
+		.factory('BlankFactory', [function(){
+
+		}])
+
+		.service('BlankService', [function(){
+
+		}]);
+###controller.js
+		angular.module('app.controllers', ['ionic', 'ngAnimate'])
+		.controller('startCtrl', function($scope, $window, $rootScope, $state, $ionicLoading, $timeout, $interval, $http, $cordovaSQLite, $ionicHistory) {
+		})

@@ -36,7 +36,19 @@ ionic+angularjs
 
         ionic build android（编译项目apk）ionic emulate android（运行项目apk 手机连接在手机运行 模拟器连接在模拟器运行） 
         ionic run android （相当于build + emulate） 
-        
+
         ionic serve （开启服务调试） 
 
         ionic build iOS（编译项目ipk）ionic emulate ios（运行项目ipk） 
+
+###ngcordova 插件使用方法
+        <http://ngcordova.com/docs/>
+####cordova 安装
+        $ bower install ngCordova
+####引入
+        <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+        <script src="cordova.js"></script>
+
+        angular.module('myApp', ['ngCordova'])
+        举例 $cordovaFileTransfer
+        cordova plugin add cordova-plugin-file-transfer
